@@ -60,10 +60,10 @@ def update(key_name='master', master=True, slave=False):
     # Streaming monitoring
 
     if slave:
-        result = engine.execute(SLAVE_QUERY).fetchall()
-        log_delay = result[0]
         key = '{}.log_delay'.format(key_base)
-        value = int(log_delay)
+        result = engine.execute(SLAVE_QUERY).fetchall()
+        for row in result:
+            value = int(row['log_delay'])
         statsd.gauge(key, value)
 
     elif master:
