@@ -9,3 +9,5 @@ six==1.3.0
 statsd==2.0.2
 wsgiref==0.1.
 sqlalchemy
+psycopg2
+

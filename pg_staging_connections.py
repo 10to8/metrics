@@ -84,9 +84,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Monitor postgres')
     parser.add_argument("-n", "--name", type=str, default='master',
                         help="name to use in statsd key")
-    parser.add_argument("-m", "--master", type=bool, default=False,
+    parser.add_argument("-m", "--master", action='store_true',
                         help='Monitor a replicate master. The default.')
-    parser.add_argument("-s", "--slave", type=bool, default=False,
+    parser.add_argument("-s", "--slave", action='store_true',
                         help='Monitor a replicate slave')
 
     args = parser.parse_args()
