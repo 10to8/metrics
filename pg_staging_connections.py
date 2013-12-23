@@ -48,7 +48,7 @@ def update(key_name='master', master=True, slave=False):
         if not ip:
             ip = 'localhost'
 
-        key = '{}.connections.{}'.format(key_base, ip)
+        key = '{}.connections.{}'.format(key_base, ip.replace('.', '-'))
         value = int(counter)
         statsd.gauge(key, value)
         total += value
@@ -72,7 +72,7 @@ def update(key_name='master', master=True, slave=False):
         for index, (ip, log_delay) in enumerate(result):
             if not ip:
                 ip = 'localhost'
-            key = '{}.replica_log_delay.{}'.format(key_base, ip)
+            key = '{}.replica_log_delay.{}'.format(key_base, ip.replace('.', '-'))
             value = int(log_delay)
             statsd.gauge(key, value)
         key = '{}.replicas_count'.format(key_base)
